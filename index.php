@@ -1,7 +1,7 @@
 ﻿<?php
-//$request = file_get_contents('php://input');
-//$input = json_decode($request, true);
-$input = array('0'=>'28798261');
+$request = file_get_contents('php://input');
+$input = json_decode($request, true);
+//$input = array('0'=>'28798261');
 $res = array();
 
 foreach ($input as $key=>$value) {
@@ -27,9 +27,9 @@ foreach ($input as $key=>$value) {
 		'albumId'=>$albumId,
 		'mpsUrl'=>$mp3Url,
 		'picUrl'=>$picUrl
-	)
-	
-	array_push($res, $key=>$tmpArray);
+	);
+	$res[$key] = $tmpArray;
+	//array_push($res, $key=>$tmpArray);
 }
 
 echo json_encode($res, JSON_UNESCAPED_UNICODE);
