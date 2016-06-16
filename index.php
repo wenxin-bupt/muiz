@@ -5,7 +5,7 @@ $input = json_decode($request, true);
 $res = array();
 
 foreach ($input as $key=>$value) {
-	$url = 'http://music.163.com/api/song/detail/?id='.$value.'&ids=['.$value']&csrf_token=Method=GET';
+	$url = 'http://music.163.com/api/song/detail/?id='.$value.'&ids=['.$value.']&csrf_token=Method=GET';
     
 	$json = netease_http($url);
 	$array = $json;
