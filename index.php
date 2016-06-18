@@ -1,6 +1,6 @@
 <?php
-$request = file_get_contents('php://input');
-$input = json_decode($request, true);
+//$request = file_get_contents('php://input');
+//$input = json_decode($request, true);
 $input = array('0'=> '22854001','1'=>'22854002','2'=>'22854003','3'=>'22854004');
 $res = array();
 foreach ($input as $key=>$value) {
