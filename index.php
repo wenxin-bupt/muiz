@@ -1,12 +1,10 @@
 <?php
 $request = file_get_contents('php://input');
 $input = json_decode($request, true);
-//$input = array('0'=>'28798261');
+$input = array('0'=> '22854001','1'=>'22854002','2'=>'22854003','3'=>'22854004');
 $res = array();
-
 foreach ($input as $key=>$value) {
 	$url = 'http://music.163.com/api/song/detail/?id='.$value.'&ids=['.$value.']&csrf_token=Method=GET';
-    
 	$json = netease_http($url);
 	$array = $json;
 	$name = $array['songs']['0']['name'];
@@ -18,7 +16,6 @@ foreach ($input as $key=>$value) {
 	$mp3Url = getMp3Url($albumId,$array['songs']['0']['id']);
 	$mp3Url = str_replace("http://m", "http://p", $mp3Url);
 	$picUrl = $array['songs']['0']['album']['picUrl'];
-	
 	$tmpArray = array(
 		'songName'=>$name,
 		'artists'=>$artists,
@@ -30,11 +27,10 @@ foreach ($input as $key=>$value) {
 	);
 	$res[$key] = $tmpArray;
 	//array_push($res, $key=>$tmpArray);
-	echo $tmpArray;
+	//echo $tmpArray;
 }
-$json_resjson_encode($res, JSON_UNESCAPED_UNICODE);
+$json_res = json_encode($res, JSON_UNESCAPED_UNICODE);
 echo $json_res;
-
 function netease_http($url)
 {
 	$refer = "http://music.163.com/";
@@ -50,11 +46,10 @@ function netease_http($url)
 	if ($cexecute) {
 		$result = json_decode($cexecute, true);
 		return $result;
-    }else{
-        return false;
+	}else{
+		return false;
 	}
 }
-
 function getMp3Url($album_id,$song_id){
 	$result = netease_http("http://music.163.com/api/album/$album_id?id=$album_id");
 	if ($result['code'] == '200'){
@@ -66,3 +61,4 @@ function getMp3Url($album_id,$song_id){
 	return $result['mp3Url'];
 }
 ?>
+
