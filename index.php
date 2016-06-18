@@ -15,14 +15,14 @@ if($json){
     $mp3Url = str_replace("http://m", "http://p", $mp3Url);
     $picUrl = $array['songs']['0']['album']['picUrl'];
     $tmpArray = array(
-    'songName'=>$name,
-    'artists'=>$artists,	
-    'artistsId'=>$artistsId,
+        'songName'=>$name,
+        'artists'=>$artists,	
+        'artistsId'=>$artistsId,
         'album'=>$album,
-		'albumId'=>$albumId,
-		'mpsUrl'=>$mp3Url,
-		'picUrl'=>$picUrl
-	);
+        'albumId'=>$albumId, 
+        'mp3Url'=>$mp3Url,
+        'picUrl'=>$picUrl
+    );
     $json_res = json_encode($tmpArray, JSON_UNESCAPED_UNICODE);
     echo $json_res;
 }else{
