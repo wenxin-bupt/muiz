@@ -30,9 +30,10 @@ foreach ($input as $key=>$value) {
 	);
 	$res[$key] = $tmpArray;
 	//array_push($res, $key=>$tmpArray);
+	echo $tmpArray;
 }
-
-echo json_encode($res, JSON_UNESCAPED_UNICODE);
+$json_resjson_encode($res, JSON_UNESCAPED_UNICODE);
+echo $json_res;
 
 function netease_http($url)
 {
